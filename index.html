@@ -1,53 +1,44 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<html lang="ja">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2299989082244284"
-     crossorigin="anonymous"></script>
-<script>
-  function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split('=');
-      if (decodeURIComponent(pair[0]) == variable) {
-        return decodeURIComponent(pair[1]);
-      }
-    }
-    console.log('Query variable %s not found', variable);
-  }
-
-  var q = getQueryVariable('q');
-  if (!q) {
-    window.location.replace("https://a.23o7.net/home");
-  }
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>動的YouTubeビデオ</title>
+  <style>
+    /* スタイルはここに追加します */
+  </style>
+</head>
+<body>
+  <div id="video-container"></div>
 
   <script>
-    // ページがロードされたときに実行される関数
-    window.onload = function() {
-      // URLを取得する
-      var url = window.location.href;
-
-      // クエリ文字列を抽出する
-      var queryString = url.split("?")[1];
-
-      // クエリパラメータを分割する
-      var params = queryString.split("&");
-
-      // 各クエリパラメータを処理する
-      for (var i = 0; i < params.length; i++) {
-        // クエリパラメータを分割する
-        var param = params[i].split("=");
-
-        // クエリパラメータ名と値を取得する
-        var value = param[1];
-
-        // HTMLのdiv要素を取得する
-        var div = document.getElementById("query-params");
-        // クエリの表示
-        document.write(`<!DOCTYPE html><meta charset="UTF-8"><head><link rel="icon" href="https://a.23o7.net/ad_off.png"><title>Ad Off</title><link rel="stylesheet" href="https://a.23o7.net/style.css"></head><header><a class="title" href=https://hrgame.org/><img src="https://a.23o7.net/rogo.png"></a><nav class="nav"><ul class="header-menu"><li class="menu-item"><a class="header-menu" href="https://a.23o7.net/home">URLを生成する　</a></li></ul></nav></header><iframe width="100%" height="1080" src="https://www.youtube.com/embed/`+value+`"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><footer><a class="noline">Mail:</a><a class="noline" href="mailto:admin@adoff.23o7.net">admin@adoff.23o7.net</a></a><br><a class="noline">Twitter:<a class="noline" href="https://twitter.com/GamerHRGAME/">@GamerHRGAME</a></a><br><a class="noline" href="https://forms.gle/ZUAHavx5AoagRYRBA">フィードバックを送信する</a><br><br><p style="copy">Copyright© <a href="https://github.com/kabuchin">Kabuchin</a> All rights reserved.</p></footer></html>`);
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+          return decodeURIComponent(pair[1]);
+        }
       }
+      console.log('Query variable %s not found', variable);
+    }
+
+    var q = getQueryVariable('q');
+    if (!q) {
+      window.location.replace("https://a.23o7.net/home");
+    } else {
+      var videoContainer = document.getElementById('video-container');
+      var iframe = document.createElement('iframe');
+      iframe.width = '100%';
+      iframe.height = '100%';
+      iframe.src = 'https://www.youtube.com/embed/' + q;
+      iframe.title = 'YouTube video player';
+      iframe.frameborder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      videoContainer.appendChild(iframe);
     }
   </script>
-</head>
-<footer><a class="noline">Mail:</a><a class="noline" href="mailto:admin@adoff.23o7.net">admin@adoff.23o7.net</a></a><br><a class="noline">Twitter:<a class="noline" href="https://twitter.com/GamerHRGAME/">@GamerHRGAME</a></a><br><a class="noline" href="https://forms.gle/ZUAHavx5AoagRYRBA">フィードバックを送信する</a><br><br><p class="copy">Copyright © 2022 HRGAME All rights reserved.</p></footer></html>
+</body>
+</html>
